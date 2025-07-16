@@ -28,7 +28,7 @@ This project is built using the **MERN stack** (MongoDB, Express.js, React.js, N
 - **React.js**
 - Axios (API calls)
 - React Router
-- Context API / Redux (if used)
+- Context API 
 - Socket.io-client
 
 ### Backend
