@@ -17,7 +17,7 @@ This project is built using the **MERN stack** (MongoDB, Express.js, React.js, N
 - 📝 Create Posts with Description
 - ❤️ Real-Time Likes (via WebSocket)
 - 💬 Real-Time Comments (via WebSocket)
-- 📡 Live Updates for Posts & Interactions
+- 📡 Real-Time Updates for Posts & Interactions
 - 🗃️ MongoDB for persistent storage
 
 ---
@@ -46,5 +46,5 @@ This project is built using the **MERN stack** (MongoDB, Express.js, React.js, N
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/linkedin-clone.git
-cd linkedin-clone
+git clone https://github.com/Aditya-yadav-dev/LinkedIn-Clone.git
+cd LinkedIn-Clone
