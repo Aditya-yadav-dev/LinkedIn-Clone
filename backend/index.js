@@ -37,7 +37,7 @@ app.use('/api/connection',connectionRouter)
 app.use('/api/notification',notificationRouter)
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Server is live");
 });
 export const userSocketMap = new Map()
 io.on("connection",(socket)=>{
