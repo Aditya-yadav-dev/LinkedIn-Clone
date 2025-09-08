@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
-
 import profile from '../assets/profile.png'
 import { IoCameraReverseOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
@@ -10,7 +9,6 @@ import { UserDataContext } from '../context/UserContext';
 import EditProfile from '../components/EditProfile';
 import axios from 'axios';
 import Post from '../components/Post';
-import Connection from '../../../backend/models/connection.model';
 import ConnectionButton from '../components/ConnectionButton';
 const Profile = () => {
     const { userData, setUserData, edit, setEdit, postData, setpostData, profileData, setprofileData } = useContext(UserDataContext)

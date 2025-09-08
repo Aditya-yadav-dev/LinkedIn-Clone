@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client';
  export const UserDataContext = createContext() 
-export let socket = io('https://linkdlclone.onrender.com')
+export let socket = io('http://localhost:3000')
 const UserContext = ({children}) => {
    const {ServerUrl} =  useContext(AuthDataContext)
    const [userData, setUserData] = useState(null)
