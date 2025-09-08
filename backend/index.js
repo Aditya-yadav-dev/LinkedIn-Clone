@@ -15,10 +15,10 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app)
 export const io = new Server(server,{
-  cors:({
+  cors:{
     origin: "linked-in-clone-q8fk.vercel.app",
     credentials: true
-  })
+  }
 })
 app.use(cookieParser());
 app.use(express.json());
