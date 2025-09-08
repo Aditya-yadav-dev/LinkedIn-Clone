@@ -16,14 +16,14 @@ const app = express();
 const server = http.createServer(app)
 export const io = new Server(server,{
   cors:{
-    origin: "linked-in-clone-q8fk.vercel.app",
+    origin: "https://linked-in-clone-q8fk.vercel.app",
     credentials: true
   }
 })
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-  origin: "linked-in-clone-q8fk.vercel.app",
+  origin: "https://linked-in-clone-q8fk.vercel.app",
   credentials: true
 }));
 
