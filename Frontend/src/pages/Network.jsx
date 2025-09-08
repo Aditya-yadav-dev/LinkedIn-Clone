@@ -12,7 +12,7 @@ const Network = () => {
      const handleGetRequest = async()=>{
         try {
             let result = await axios.get(`${ServerUrl}/api/connection/requests`,{withCredentials: true})
-            console.log('result is :',result)
+            // console.log('result is :',result)
             setconnections(result.data)
         } catch (error) {
             console.log(error)
@@ -22,7 +22,7 @@ const Network = () => {
      const handleAcceptConnection = async(requestId)=>{
             try {
               let result = await axios.put(`${ServerUrl}/api/connection/accept/${requestId}`,{},{withCredentials: true})
-              console.log('result is :',result)
+              // console.log('result is :',result)
               setconnections(connections.filter((con)=>con._id==requestId))
               navigate('/')
 
@@ -34,7 +34,7 @@ const Network = () => {
      const handleRejectConnection = async(requestId)=>{
             try {
               let result = await axios.put(`${ServerUrl}/api/connection/reject/${requestId}`,{},{withCredentials: true})
-              console.log('result is :',result)
+              // console.log('result is :',result)
               setconnections(connections.filter((con)=>con._id==requestId))
               navigate('/')
               

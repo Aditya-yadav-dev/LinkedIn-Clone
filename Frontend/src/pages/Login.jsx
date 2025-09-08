@@ -40,8 +40,8 @@ const [error, seterror] = useState('')
           setloading(false)
           console.log(error)
           if (error.response) {
-              console.log('Error Data:', error.response.data); // backend's message
-              console.log('Status Code:', error.response.status); // 400
+              console.log('Error Data:', error.response.data); 
+              console.log('Status Code:', error.response.status); 
               seterror(error.response.data.message)
             }
             setTimeout(()=>{

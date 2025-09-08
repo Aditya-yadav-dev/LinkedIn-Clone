@@ -116,7 +116,7 @@ const EditProfile = () => {
 
     const handleSaveProfile = async () => {
         try {
-            console.log(ServerUrl);
+            // console.log(ServerUrl);
             setsaving(true)
             let formdata = new FormData()
             formdata.append("firstname", firstname)
@@ -135,7 +135,7 @@ const EditProfile = () => {
                 // console.log('backend rofile image is:', backendprofileImage)
 
             }
-            console.log('backend profile image is:', backendprofileImage)
+            // console.log('backend profile image is:', backendprofileImage)
             if (backendCoverImage) {
                 formdata.append("coverImage", backendCoverImage)
             }

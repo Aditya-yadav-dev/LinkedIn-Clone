@@ -13,8 +13,21 @@ This project is built using the **MERN stack** (MongoDB, Express.js, React.js, N
 ## 🚀 Features
 
 - 🔐 User Authentication (Sign Up / Sign In)
+      ![SignUp](<Screenshot 2025-09-08 175101.png>)
+
+       ![SignIn](<Screenshot 2025-09-08 175019.png>)
+
+- 🧑‍💼 Home Page
+   ![Home page](<Screenshot 2025-09-08 174004.png>)
+
 - 🧑‍💼 Profile Management (View, Edit)
+   ![Prifile Edit Page](<Screenshot 2025-09-08 174144.png>)
+
+   ![View Profile](<Screenshot 2025-09-08 174849.png>)
+
 - 📝 Create Posts with Description
+     ![Post Page](<Screenshot 2025-09-08 174113.png>)
+
 - ❤️ Real-Time Likes (via WebSocket)
 - 💬 Real-Time Comments (via WebSocket)
 - 📡 Real-Time Updates for Posts & Interactions

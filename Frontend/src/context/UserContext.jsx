@@ -28,9 +28,9 @@ const UserContext = ({children}) => {
 
    const handleGetProfile=async(userName)=>{
           try {
-            console.log(userName)
+            // console.log(userName)
             let result = await axios.get(ServerUrl+`/api/user/profile/${userName}`,{withCredentials:true})
-            console.log(result.data)
+            // console.log(result.data)
             setprofileData(result.data) 
             navigate('/profile')
           } catch (error) {
@@ -41,10 +41,10 @@ const UserContext = ({children}) => {
 
    const getPost =async()=>{
     try {
-      console.log('get post is executing')
+      // console.log('get post is executing')
       const result= await axios.get(ServerUrl+'/api/post/getpost',  {withCredentials: true})
       setpostData(result.data)
-      console.log(result)
+      // console.log(result)
     } catch (error) {
       if (error.response) {
         console.error('Response error:', error.response.data);

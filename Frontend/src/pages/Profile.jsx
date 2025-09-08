@@ -17,7 +17,7 @@ const Profile = () => {
    
     useEffect(() => {
         setprofilepost(postData.filter((post) => post.author._id === profileData._id))
-        console.log(profileData.skills)
+        // console.log(profileData.skills)
     }, [profileData])
 
     return (

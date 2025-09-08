@@ -27,7 +27,7 @@ const Post = ({ id, author, image, comment, description, like, createdAt }) => {
             let result = await axios.get(ServerUrl + `/api/post/like/${id}`,
                 { withCredentials: true }
             )
-            console.log(result)
+            // console.log(result)
             setlikes(result.data.like)
         } catch (error) {
             console.log(error)
@@ -40,8 +40,8 @@ const Post = ({ id, author, image, comment, description, like, createdAt }) => {
                 { content: commentContent },
                 { withCredentials: true }
             )
-            console.log(result.data.comment)
-            console.log(result.data)
+            // console.log(result.data.comment)
+            // console.log(result.data)
             setcomments(result.data.comment)
             setcommentContent('')
         } catch (error) {

@@ -13,7 +13,7 @@ const Notification = () => {
     try {
       let result = await axios.get(`${ServerUrl}/api/notification/getnotification`, { withCredentials: true })
       setnotificationData(result.data)
-      console.log('notification result:', result)
+      // console.log('notification result:', result)
     } catch (error) {
       console.log(error)
     }

@@ -34,7 +34,7 @@ const Navbar = () => {
         try {
            
             let result = await axios.get(`${ServerUrl}/api/user/search?query=${searchInp}`,{withCredentials:true}) 
-            console.log(result.data)
+            // console.log(result.data)
             setsearchData(result.data)
         } catch (error) {
             console.log(error)

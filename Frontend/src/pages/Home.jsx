@@ -55,7 +55,7 @@ const Home = () => {
   const handleSuggestedUser = async () => {
     try {
       let result = await axios(ServerUrl + '/api/user/suggestedUser', { withCredentials: true })
-      console.log('suggested users:', result.data)
+      // console.log('suggested users:', result.data)
       setsuggestedUser(result.data)
     } catch (error) {
       console.log(error)
@@ -64,13 +64,13 @@ const Home = () => {
 
   const checksuguser = ()=>{
      handleSuggestedUser()
-    console.log('suggested users are :',suggestedUser);
+    // console.log('suggested users are :',suggestedUser);
   }
 
 
   useEffect(() => {
     handleSuggestedUser()
-    console.log('suggested users usestate ', suggestedUser)
+    // console.log('suggested users usestate ', suggestedUser)
   }, [])
 
   

@@ -35,7 +35,7 @@ const signup = () => {
             email: formdata.email,
             password: formdata.password
           },{withCredentials:true}) 
-        console.log('result',response.data)
+        // console.log('result',response.data)
         setUserData(response.data)
         navigate('/')
         setloading(false)
