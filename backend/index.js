@@ -16,14 +16,14 @@ const app = express();
 const server = http.createServer(app)
 export const io = new Server(server,{
   cors:({
-    origin: "https://linkdlclone-frontend-n3dn.onrender.com",
+    origin: "http://localhost:5173",
     credentials: true
   })
 })
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-  origin: "https://linkdlclone-frontend-n3dn.onrender.com",
+  origin: "http://localhost:5173",
   credentials: true
 }));
 
@@ -50,7 +50,12 @@ io.on("connection",(socket)=>{
   })
 })
 
+await connectdb();
+ 
+if(process.env.NODE_ENV !== "production"){
 server.listen(port, () => {
-  connectdb();
   console.log(`Server is running on port ${port}`);
 });
+}
+
+export default server;
