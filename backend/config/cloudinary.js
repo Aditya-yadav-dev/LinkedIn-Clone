@@ -11,7 +11,9 @@ const uploadOnCloudinary= async(filepath)=>{
     if(!filepath){
         return null;
     }
-    const uploadResult = await cloudinary.uploader.upload(filepath)
+    const uploadResult = await cloudinary.uploader.upload(filepath, {
+        folder: "linkedin-clone/posts",
+    })
     fs.unlinkSync(filepath)
     return uploadResult.secure_url
     // console.log(uploadResult);
