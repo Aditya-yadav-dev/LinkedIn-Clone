@@ -71,10 +71,9 @@ io.on("connection",(socket)=>{
 
 await connectdb();
  
-if(process.env.NODE_ENV !== "production"){
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-}
+
 
 export default server;
