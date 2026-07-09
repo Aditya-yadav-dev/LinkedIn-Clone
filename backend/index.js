@@ -9,21 +9,37 @@ import postRouter from "./routes/post.route.js";
 import connectionRouter from "./routes/connection.route.js";
 import http from 'http';
 import { Server } from "socket.io";
-import { Socket } from "dgram";
 import notificationRouter from "./routes/notification.route.js";
 dotenv.config();
 const app = express();
 const server = http.createServer(app)
+
+const allowedOrigins = ['http://localhost:5173', 'https://linked-in-clone-q8fk.vercel.app']
+
 export const io = new Server(server,{
-  cors:{
-    origin: "https://linked-in-clone-q8fk.vercel.app",
+  cors:({
+    origin: function (origin, callback) {
+      if(!origin) return callback(null, true);
+      if(!allowedOrigins.includes(origin)){
+        var msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+        return callback(new Error(msg), false);
+      }
+     return callback(null, true);
+    },
     credentials: true
-  }
+  })
 })
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-  origin: "https://linked-in-clone-q8fk.vercel.app",
+  origin: function (origin, callback) {
+      if(!origin) return callback(null, true);
+      if(!allowedOrigins.includes(origin)){
+        var msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+        return callback(new Error(msg), false);
+      }
+     return callback(null, true);
+    },
   credentials: true
 }));
 
@@ -41,12 +57,15 @@ app.get("/", (req, res) => {
 });
 export const userSocketMap = new Map()
 io.on("connection",(socket)=>{
-  console.log('user connected',socket.id)
+  // console.log('user connected',socket.id)
   socket.on('register',(userId)=>{
+    socket.userId = userId;
     userSocketMap.set(userId,socket.id)
   })
-  socket.on("disconnect",(socket)=>{
-        console.log('user disconnect',socket.id)
+  socket.on("disconnect",(reason)=>{
+    if(socket.userId) userSocketMap.delete(socket.userId);
+        // console.log('user disconnect',socket.id)
+        console.log('reason',reason)
   })
 })
 

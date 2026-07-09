@@ -3,46 +3,47 @@ import { AuthDataContext } from './AuthContext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client';
- export const UserDataContext = createContext() 
-export let socket = io('https://linked-in-clone-ecru.vercel.app')
-const UserContext = ({children}) => {
-   const {ServerUrl} =  useContext(AuthDataContext)
-   const [userData, setUserData] = useState(null)
-   const [edit, setEdit] = useState(false)
-   const [postData, setpostData] = useState([])
-   const [profileData, setprofileData] = useState([])
-   const navigate = useNavigate()
-   const getcurrentUser = async()=>{
+export const UserDataContext = createContext()
+// export let socket = io('https://linked-in-clone-ecru.vercel.app')
+export let socket = io('http://localhost:3000') 
+const UserContext = ({ children }) => {
+  const { ServerUrl } = useContext(AuthDataContext)
+  const [userData, setUserData] = useState(null)
+  const [edit, setEdit] = useState(false)
+  const [postData, setpostData] = useState([])
+  const [profileData, setprofileData] = useState([])
+  const navigate = useNavigate()
+  const getcurrentUser = async () => {
     try {
-        // console.log('server url is:',ServerUrl)
-        const response = await axios.get(ServerUrl+'/api/user/currentuser',{
-            withCredentials: true
-        })
-        //  console.log('response is :',response)
-         setUserData(response.data)   
+      // console.log('server url is:',ServerUrl)
+      const response = await axios.get(ServerUrl + '/api/user/currentuser', {
+        withCredentials: true
+      })
+      //  console.log('response is :',response)
+      setUserData(response.data)
 
     } catch (error) {
-        console.error('error is',error.response.data)
-    }    
-   }
+      console.error('error is', error.response.data)
+    }
+  }
 
-   const handleGetProfile=async(userName)=>{
-          try {
-            // console.log(userName)
-            let result = await axios.get(ServerUrl+`/api/user/profile/${userName}`,{withCredentials:true})
-            // console.log(result.data)
-            setprofileData(result.data) 
-            navigate('/profile')
-          } catch (error) {
-            console.log(error)
-          }
+  const handleGetProfile = async (userName) => {
+    try {
+      // console.log(userName)
+      let result = await axios.get(ServerUrl + `/api/user/profile/${userName}`, { withCredentials: true })
+      // console.log(result.data)
+      setprofileData(result.data)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
 
-   }
+  }
 
-   const getPost =async()=>{
+  const getPost = async () => {
     try {
       // console.log('get post is executing')
-      const result= await axios.get(ServerUrl+'/api/post/getpost',  {withCredentials: true})
+      const result = await axios.get(ServerUrl + '/api/post/getpost', { withCredentials: true })
       setpostData(result.data)
       // console.log(result)
     } catch (error) {
@@ -55,23 +56,23 @@ const UserContext = ({children}) => {
       }
     }
 
-   }
-   const value = {
-    userData, setUserData,edit,setEdit,postData,setpostData, getPost,handleGetProfile, profileData, setprofileData
- }
+  }
+  const value = {
+    userData, setUserData, edit, setEdit, postData, setpostData, getPost, handleGetProfile, profileData, setprofileData
+  }
 
-   useEffect(() => {
-     getcurrentUser()
-     getPost()
-   }, [])
-   
+  useEffect(() => {
+    getcurrentUser()
+    getPost()
+  }, [])
+
 
   return (
-   <>
-        <UserDataContext.Provider value={ value}>
-         {children}
-        </UserDataContext.Provider>
-        </>
+    <>
+      <UserDataContext.Provider value={value}>
+        {children}
+      </UserDataContext.Provider>
+    </>
   )
 }
 

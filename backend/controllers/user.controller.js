@@ -29,16 +29,16 @@ export const updateProfile = async (req, res) => {
     let profileImage;
     let coverImage;
 
-    console.log(req.files); 
+    // console.log(req.files); 
 
     if (req.files?.profileImage) {
       profileImage = await uploadOnCloudinary(req.files.profileImage[0].path);
-      console.log('profile path is',req.files.profileImage[0].path)
+      // console.log('profile path is',req.files.profileImage[0].path)
     }
 
     if (req.files?.coverImage) {
       coverImage = await uploadOnCloudinary(req.files.coverImage[0].path);
-      console.log('cover path is',req.files.coverImage[0].path)
+      // console.log('cover path is',req.files.coverImage[0].path)
     }
 
     const user = await User.findByIdAndUpdate(
@@ -70,7 +70,7 @@ export const getprofile = async(req,res)=>{
 
         try {
           let {userName} = req.params;
-          console.log('user name is :',userName)
+          // console.log('user name is :',userName)
           let user = await User.findOne({username:userName}).select('-password')
          
           if(!user){
@@ -114,13 +114,13 @@ export const getSuggestedUser = async(req,res)=>{
            
            let suggestedUsers = await User.find({
            _id:{
-             $ne:currentUser, $nin: currentUser.connection
+             $ne:currentUser._id, $nin: currentUser.connection
            }
            })
-           console.log('current only connection user:',suggestedUsers)
+          //  console.log('current only connection user:',suggestedUsers)
            return res.status(200).json(suggestedUsers)
        } catch (error) {
-        console.log(error)
+        //  console.log(error)
           return res.status(500).json({message: `Suggested user error ${error}`})
        }
 }  

@@ -1,6 +1,7 @@
 import React, { createContext } from 'react'
 export const AuthDataContext  = createContext()
-const ServerUrl = 'https://linked-in-clone-ecru.vercel.app';
+// const ServerUrl = 'https://linked-in-clone-ecru.vercel.app';
+const ServerUrl = 'http://localhost:3000';
 let value ={ 
     ServerUrl
 }
