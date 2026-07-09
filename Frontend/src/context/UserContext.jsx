@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client';
 export const UserDataContext = createContext()
 // export let socket = io('https://linked-in-clone-ecru.vercel.app')
-export let socket = io('http://localhost:3000') 
+// export let socket = io('http://localhost:3000') 
+export let socket = io('https://linkedin-clone-3kb9.onrender.com') 
 const UserContext = ({ children }) => {
   const { ServerUrl } = useContext(AuthDataContext)
   const [userData, setUserData] = useState(null)
