@@ -53,17 +53,15 @@ export const login = async(req,res)=>{
      
       const token = genToken(user._id)
       // console.log('token type is', typeof token)
-      // console.log('token in login', token)
+      console.log('Node_ENV', process.env.NODE_ENV);
       res.cookie('token', token ,{
           httpOnly: true,
           maxAge: 7*24*60*60*1000,
-          sameSite: "None",
+          sameSite: process.env.NODE_ENV==='production' ? "None" : "Lax",
           secure: process.env.NODE_ENV==='production'
       })
-      console.log('token in login', req.cookies)
-        return res.status(200).json(user)
-       
-  
+       return res.status(200).json(user)
+      
       } catch (error) {
           return res.status(500).json({message: error})
       }
